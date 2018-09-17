@@ -1,9 +1,17 @@
 #PepperChat
 ##Integration of Dialogflow with Pepper
 
-**Note: This application will not work without a Pepper. In order to use
+**
+Notes: 
+1. This application will not work without a Pepper. In order to use
 Dialogflow, it must have something to send to it. Without a Pepper, there is no
-audio to send.**
+audio to send.
+
+2. Although the method used to call Dialogflow uses that for streaming audio,
+the audio is not yet streamed. The file dialogflow_thread.py is not used but is
+intended for that purpose. It is not clear that streaming should be used. It
+may help reduce the latency seen.
+**
 
 This is the inital work for integrating Dialogflow with Pepper. It consists of
 an export of PepperChat.zip which is the current implementation of the chatbot
