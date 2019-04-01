@@ -1,8 +1,7 @@
 # PepperChat
 ## Integration of Dialogflow with Pepper
 
-**
-Notes: 
+**Notes:** 
 1. This application will not work without a Pepper. In order to use
 Dialogflow, it must have something to send to it. Without a Pepper, there is no
 audio to send.
@@ -10,7 +9,8 @@ audio to send.
 2. Although the method used to call Dialogflow uses that for streaming audio,
 the audio is not yet streamed. It is not clear that streaming should be used. It
 may help reduce the latency seen.
-**
+
+### About this project
 
 This is the inital work for integrating Dialogflow with Pepper. It consists of
 an export of PepperChat.zip which is the current implementation of the chatbot
@@ -49,12 +49,12 @@ few different ways it can be used.
 
 The application listens to the microphone input from Pepper.
 
-##say
+## say
 It the only thing you want Pepper to do is say some text, then use 'say' as your
 action code. For more information of the say action, look at Softbank
 documentation for Naoqi and Pepper.
 
-##behavior
+## behavior
 This reflects the Naoqi API documentation for ALBehaviorManager. Any behavior
 that is installed on Pepper can be run from this application. The only thing
 to put in the response text is the path to the behavior. This is the preferred
@@ -65,13 +65,13 @@ Pepper application package that tells random jokes that can be installed on
 Pepper. It has been set to not be a collaborative dialog so Pepper himself does
 not respond to "Tell me a joke," so that only the chatbot will respond.
 
-##url
+## url
 To display something to the tablet, place the full http(s)://path-to-web-page.
 Alternatively, if you do not specify 'http(s)://' then the path is relative to
 Pepper's internal file structure. This means that the file must be installed on
 Pepper in a html subdirectory of a given package.
 
-##dialog
+## dialog
 If you don't already have a behavior created for Pepper, this can be used to, in
 essence, create a behavior. Knowledge of QiChat is necessary. Anything that you
 can do in QiChat, you can do here. The only thing you do not have to do is make
