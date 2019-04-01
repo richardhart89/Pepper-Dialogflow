@@ -2,7 +2,7 @@
 ## Integration of Dialogflow with Pepper
 
 **Notes:** 
-1. This application will not work without a Pepper. In order to use Dialogflow, it must have something to send to it. Without a Pepper, there is no audio to send.
+1. This application will not work without a Pepper. In order to use Dialogflow, it must have something to send to it. Without a Pepper, there is nothing to connect a Naoqi session to and thus no audio to capture and send.
 
 2. Although the method used to call Dialogflow uses that for streaming audio, the audio is not yet streamed. It is not clear that streaming should be used. It may help reduce the latency seen.
 
