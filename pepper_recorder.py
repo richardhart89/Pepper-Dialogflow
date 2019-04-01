@@ -10,10 +10,11 @@ import uuid
 import traceback
 import wave
     
-from dialogflow_thread import thread_method
 from detect_intent_stream import detect_intent_stream
 
 LISTEN_RETRIES = 10
+
+DIALOG_FLOW_GCP_PROJECT_ID = "my_gcp_project_id"
 
 class SoundProcessingModule(ALModule):
     def __init__( self, name, ip, stop_recognition):
@@ -40,9 +41,6 @@ class SoundProcessingModule(ALModule):
         """init a in memory file object and save the last raw sound buffer to it."""
         self.outfile = StringIO.StringIO()
         self.procssingQueue = Queue()
-        #self.processingThread = Thread(target=thread_method, args=(self.procssingQueue, ))
-        #print("Thread returned: " + str(self.processingThread))
-        #self.processingThread.start()
         self.recordingInProgress = True
         if not previous_sound_data is None:
             self.procssingQueue.put(previous_sound_data[0].tostring())
@@ -55,7 +53,7 @@ class SoundProcessingModule(ALModule):
         self.previous_sound_data = None
         self.outfile.seek(0)
         try:
-            detect_intent_stream("pepper-7c1d6", self.uuid, self.outfile, "en-US", self.ip)
+            detect_intent_stream(DIALOG_FLOW_GCP_PROJECT_ID, self.uuid, self.outfile, "en-US", self.ip)
         except:
             traceback.print_exc()
         #print "detection ended"        
@@ -68,7 +66,6 @@ class SoundProcessingModule(ALModule):
         self.ALAudioDevice.setClientPreferences(self.getName(), 16000, 3, 0)
         self.ALAudioDevice.subscribe(self.getName())
 
-        #TODO(Lilith) remove this
         while not self.stopRecognition.is_set():
             time.sleep(1)
 
